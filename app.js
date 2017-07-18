@@ -32,7 +32,7 @@ var pike = {
     }
     var total = document.getElementById('pike');
     var liEl = document.createElement('li');
-    liEl.textContent = 'total- ' + pike.cookiesPerDay(total);
+    liEl.textContent = 'total-> ' + pike.cookiesPerDay(total);
     total.appendChild(liEl);
 
   }
@@ -41,3 +41,87 @@ var pike = {
 pike.custPh();
 pike.cookiesPerH();
 pike.render();
+
+// Sea Town
+var seaTown = {
+  minCust: 3,
+  maxCust: 24,
+  avgCookies: 1.2,
+  cookiesPrHr:[],
+  custPh: function(minCust,maxCust){
+    return (Math.floor(Math.random()* (this.maxCust - this.minCust + 1)) + this.minCust);
+  },
+  cookiesPerH: function(){
+    for(var i = 0; i < hrPd.length; i++){
+      var cookiesPer = Math.floor(this.avgCookies * this.custPh());
+      this.cookiesPrHr.push(cookiesPer);
+    }
+    return this.cookiesPrHr;
+  },
+  cookiesPerDay: function(){
+    var total = 0;
+    for(var i = 0; i < this.cookiesPrHr.length; i++){
+      total += this.cookiesPrHr[i];
+    }
+    return total;
+  },
+  render: function(){
+    var tacUL = document.getElementById('seatac');
+    for(var i = 0; i < hrPd.length; i++){
+     var liEl = document.createElement('li');
+     liEl.textContent = hrPd[i] + ':' + seaTown.cookiesPrHr[i] + ' cookies per hour';
+     tacUL.appendChild(liEl);
+    }
+    var total = document.getElementById('seatac');
+    var liEl = document.createElement('li');
+    liEl.textContent = 'total-> ' + seaTown.cookiesPerDay(total);
+    total.appendChild(liEl);
+
+  }
+};
+
+seaTown.custPh();
+seaTown.cookiesPerH();
+seaTown.render();
+
+//seattle Center
+var seaCent = {
+  minCust: 11,
+  maxCust: 38,
+  avgCookies: 3.7,
+  cookiesPrHr:[],
+  custPh: function(minCust,maxCust){
+    return (Math.floor(Math.random()* (this.maxCust - this.minCust + 1)) + this.minCust);
+  },
+  cookiesPerH: function(){
+    for(var i = 0; i < hrPd.length; i++){
+      var cookiesPer = Math.floor(this.avgCookies * this.custPh());
+      this.cookiesPrHr.push(cookiesPer);
+    }
+    return this.cookiesPrHr;
+  },
+  cookiesPerDay: function(){
+    var total = 0;
+    for(var i = 0; i < this.cookiesPrHr.length; i++){
+      total += this.cookiesPrHr[i];
+    }
+    return total;
+  },
+  render: function(){
+    var centUL = document.getElementById('seattlec');
+    for(var i = 0; i < hrPd.length; i++){
+     var liEl = document.createElement('li');
+     liEl.textContent = hrPd[i] + ':' + pike.cookiesPrHr[i] + ' cookies per hour';
+     centUL.appendChild(liEl);
+    }
+    var total = document.getElementById('seattlec');
+    var liEl = document.createElement('li');
+    liEl.textContent = 'total-> ' + pike.cookiesPerDay(total);
+    total.appendChild(liEl);
+
+  }
+};
+
+seaCent.custPh();
+seaCent.cookiesPerH();
+seaCent.render();
