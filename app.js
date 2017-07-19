@@ -64,13 +64,13 @@ function makeHeaderRow(){
     trEl.appendChild(thEl);
     // storeTable.appendChild(trEl);
 
-  var thEl = document.createElement('th');
     for(var i = 0; i < hrPd.length; i++){
+      thEl = document.createElement('th');
       thEl.textContent = hrPd[i];
       trEl.appendChild(thEl);
       // storeTable.appendChild(trEl);
     };
-  var thEl = document.createElement('th');
+  thEl = document.createElement('th');
     thEl.textContent = 'toatal';
     trEl.appendChild(thEl);
     storeTable.appendChild(trEl);
