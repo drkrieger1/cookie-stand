@@ -58,15 +58,30 @@ new CookieStand('Alki', 23, 65, 6.3);
 console.table(myStore);
 
 function makeHeaderRow(){
-  var trEL = document.createElement('tr');
+  var trEl = document.createElement('tr');
+  var thEl = document.createElement('th');
+    thEl.textContent = 'location';
+    trEl.appendChild(thEl);
+    // storeTable.appendChild(trEl);
 
   var thEl = document.createElement('th');
+    for(var i = 0; i < hrPd.length; i++){
+      thEl.textContent = hrPd[i];
+      trEl.appendChild(thEl);
+      // storeTable.appendChild(trEl);
+    };
+  var thEl = document.createElement('th');
+    thEl.textContent = 'toatal';
+    trEl.appendChild(thEl);
+    storeTable.appendChild(trEl);
+
 }
 function storeRowes(){
   for(var i = 0; i < myStore.length; i++){
     myStore[i].render();
   }
 }
+makeHeaderRow();
 storeRowes();
 // var pike = {
 //   minCust: 23,
