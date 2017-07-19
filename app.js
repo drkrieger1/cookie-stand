@@ -7,7 +7,7 @@ function CookieStand(name, minCust, maxCust, avgCookies) {
   this.name = name;
   this.minCust = minCust;
   this.maxCust = maxCust;
-  this.avgCookie = avgCookies;
+  this.avgCookiesPerSale = avgCookies;
   this.customersPerHour = [];
   this.calcCustomersPerHour = function(){
     for(var i = 0; i < hrPd.length; i++){
@@ -26,7 +26,7 @@ function CookieStand(name, minCust, maxCust, avgCookies) {
   this.totalCookiesPerDay = 0;
 
   myStore.push(this);
-  console.log(myStore);
+
 
   this.render = function(){
     var trEl = document.createElement('tr');
@@ -35,14 +35,19 @@ function CookieStand(name, minCust, maxCust, avgCookies) {
     tdEl.textContent = this.name;
     trEl.appendChild(tdEl);
 
-    for(var i = 0; i < this.cookiesSoldEachHour.length; i++){
+    for(var i = 0; i < hrPd.length; i++){
+      var tdEl = document.createElement('td');
       tdEl.textContent = this.cookiesSoldEachHour[i];
       trEl.appendChild(tdEl);
+      storeTable.appendChild(trEl);
     }
-    storeTable.appendChild(trEl);
-
+    var tdEl = document.createElement('td');
+      tdEl.textContent = this.totalCookiesPerDay;
+      trEl.appendChild(tdEl);
+      storeTable.appendChild(trEl);
   }
-}
+  this.calcCookiesSoldEachHour();
+};
 
 new CookieStand('Pike', 23, 65, 6.3);
 new CookieStand('Sea Tac', 3, 24, 1.2);
@@ -50,8 +55,19 @@ new CookieStand('Seattle Center', 11, 38, 3.7);
 new CookieStand('Capital Hill', 20, 38, 2.8);
 new CookieStand('Alki', 23, 65, 6.3);
 
-myStore[0].render();
+console.table(myStore);
 
+function makeHeaderRow(){
+  var trEL = document.createElement('tr');
+
+  var thEl = document.createElement('th');
+}
+function storeRowes(){
+  for(var i = 0; i < myStore.length; i++){
+    myStore[i].render();
+  }
+}
+storeRowes();
 // var pike = {
 //   minCust: 23,
 //   maxCust: 65,
