@@ -73,7 +73,7 @@ function makeHeaderRow(){
       // storeTable.appendChild(trEl);
     };
   thEl = document.createElement('th');
-    thEl.textContent = 'toatal';
+    thEl.textContent = 'Toatal';
     trEl.appendChild(thEl);
     storeTable.appendChild(trEl);
 
@@ -97,9 +97,9 @@ function handleStoreAdd (event){
   if(!event.target.store.value || !event.target.minC.value || !event.target.maxC.value || !event.target.maxC.value || !event.target.custAvg){
 };
   var store = event.target.store.value;
-  var minC = event.target.minC.value;
-  var maxC = event.target.maxC.value;
-  var custAvg = event.target.custAvg.value;
+  var minC = parseInt(event.target.minC.value);
+  var maxC = parseInt(event.target.maxC.value);
+  var custAvg = parseInt(event.target.custAvg.value);
 
   var newCookie = new CookieStand(store,minC,maxC,custAvg);
 console.log(myStore);
@@ -108,7 +108,10 @@ console.log(myStore);
   event.target.minC.value = null;
   event.target.maxC.value = null;
   event.target.custAvg.value = null;
-  newCookie.render();
+  // newCookie.render();
+  storeTable.innerHTML = '';
+  makeHeaderRow();
+  storeRowes();
 }
 //end of handleStoreAdd
 storeF.addEventListener('submit',handleStoreAdd);

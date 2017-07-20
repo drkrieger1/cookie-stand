@@ -19,9 +19,10 @@ form{
   color:#ff6600;
 }
 #cookieSales{
-  border:1px solid black;
   width:300px;
-  font-size:50px
+}
+#logo{
+  font-size: 50px;
 }
 form{
   border:2px solid black;
