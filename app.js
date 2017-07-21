@@ -24,7 +24,9 @@ function CookieStand(name, minCust, maxCust, avgCookies) {
       // console.log(this.totalCookiesPerDay, 'running daily cookie total');
   }
 };
+//Totals
   this.totalCookiesPerDay = 0;
+  this.cookieHtotal = 0;
 
   myStore.push(this);
 
@@ -57,7 +59,31 @@ new CookieStand('Capital Hill', 20, 38, 2.8);
 new CookieStand('Alki', 23, 65, 6.3);
 
 
+var totalH = [];
 // console.table(myStore);
+function makeFooter(){
+  var trEl = document.createElement('tr');
+  var tdEl = document.createElement('td');
+    tdEl.textContent = 'All Store Totals';
+    trEl.appendChild(tdEl);
+  for(var i = 0; i < hrPd.length; i++){
+    var hourTotal = 0;
+
+    for(var j = 0; j < myStore.length; j++){
+      hourTotal += myStore[j].cookiesSoldEachHour[i];
+    }
+    totalH.push(hourTotal);
+  }
+  for(var i = 0; i < totalH.length; i++){
+    tdEl = document.createElement('td')
+    tdEl.textContent = totalH[i];
+    trEl.appendChild(tdEl);
+  }
+  tdEl = document.createElement('td')
+  tdEl.textContent = 0;
+  trEl.appendChild(tdEl);
+  storeTable.appendChild(trEl);
+}
 
 function makeHeaderRow(){
   var trEl = document.createElement('tr');
@@ -85,6 +111,7 @@ function storeRowes(){
 }
 makeHeaderRow();
 storeRowes();
+makeFooter();
 
 //Event Handler!cust
 function handleStoreAdd (event){
