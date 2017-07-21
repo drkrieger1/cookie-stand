@@ -60,7 +60,6 @@ new CookieStand('Alki', 23, 65, 6.3);
 
 
 var totalH = [];
-// console.table(myStore);
 function makeFooter(){
   var trEl = document.createElement('tr');
   var tdEl = document.createElement('td');
