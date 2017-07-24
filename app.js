@@ -138,6 +138,7 @@ console.log(myStore);
   storeTable.innerHTML = '';
   makeHeaderRow();
   storeRowes();
+  makeFooter();
 }
 //end of handleStoreAdd
 storeF.addEventListener('submit',handleStoreAdd);
