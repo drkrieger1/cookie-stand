@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 var hrPd = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'];
 var myStore = [];
 var storeTable = document.getElementById('sales');
@@ -14,7 +14,7 @@ function CookieStand(name, minCust, maxCust, avgCookies) {
     for(var i = 0; i < hrPd.length; i++){
       this.customersPerHour.push(Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust);
     }
-   };
+  };
   this.cookiesSoldEachHour = [];
   this.calcCookiesSoldEachHour = function(){
     this.calcCustomersPerHour();
@@ -22,8 +22,8 @@ function CookieStand(name, minCust, maxCust, avgCookies) {
       this.cookiesSoldEachHour.push(Math.ceil(this.customersPerHour[i] * this.avgCookiesPerSale));
       this.totalCookiesPerDay += this.cookiesSoldEachHour[i];
       // console.log(this.totalCookiesPerDay, 'running daily cookie total');
-  }
-};
+    }
+  };
 //Totals
   this.totalCookiesPerDay = 0;
   this.cookieHtotal = 0;
@@ -39,16 +39,16 @@ function CookieStand(name, minCust, maxCust, avgCookies) {
     trEl.appendChild(tdEl);
 
     for(var i = 0; i < hrPd.length; i++){
-      var tdEl = document.createElement('td');
+      tdEl = document.createElement('td');
       tdEl.textContent = this.cookiesSoldEachHour[i];
       trEl.appendChild(tdEl);
       storeTable.appendChild(trEl);
     }
-    var tdEl = document.createElement('td');
-      tdEl.textContent = this.totalCookiesPerDay;
-      trEl.appendChild(tdEl);
-      storeTable.appendChild(trEl);
-  }
+    tdEl = document.createElement('td');
+    tdEl.textContent = this.totalCookiesPerDay;
+    trEl.appendChild(tdEl);
+    storeTable.appendChild(trEl);
+  };
   this.calcCookiesSoldEachHour();
 };
 
@@ -63,8 +63,8 @@ var totalH = [];
 function makeFooter(){
   var trEl = document.createElement('tr');
   var tdEl = document.createElement('td');
-    tdEl.textContent = 'All Store Totals';
-    trEl.appendChild(tdEl);
+  tdEl.textContent = 'All Store Totals';
+  trEl.appendChild(tdEl);
   for(var i = 0; i < hrPd.length; i++){
     var hourTotal = 0;
 
@@ -73,12 +73,12 @@ function makeFooter(){
     }
     totalH.push(hourTotal);
   }
-  for(var i = 0; i < totalH.length; i++){
-    tdEl = document.createElement('td')
-    tdEl.textContent = totalH[i];
+  for(var u = 0; u < totalH.length; u++){
+    tdEl = document.createElement('td');
+    tdEl.textContent = totalH[u];
     trEl.appendChild(tdEl);
   }
-  tdEl = document.createElement('td')
+  tdEl = document.createElement('td');
   tdEl.textContent = 0;
   trEl.appendChild(tdEl);
   storeTable.appendChild(trEl);
@@ -87,20 +87,20 @@ function makeFooter(){
 function makeHeaderRow(){
   var trEl = document.createElement('tr');
   var thEl = document.createElement('th');
-    thEl.textContent = 'location';
-    trEl.appendChild(thEl);
+  thEl.textContent = 'location';
+  trEl.appendChild(thEl);
     // storeTable.appendChild(trEl);
 
-    for(var i = 0; i < hrPd.length; i++){
-      thEl = document.createElement('th');
-      thEl.textContent = hrPd[i];
-      trEl.appendChild(thEl);
-      // storeTable.appendChild(trEl);
-    };
-  thEl = document.createElement('th');
-    thEl.textContent = 'Toatal';
+  for(var i = 0; i < hrPd.length; i++){
+    thEl = document.createElement('th');
+    thEl.textContent = hrPd[i];
     trEl.appendChild(thEl);
-    storeTable.appendChild(trEl);
+      // storeTable.appendChild(trEl);
+  };
+  thEl = document.createElement('th');
+  thEl.textContent = 'Toatal';
+  trEl.appendChild(thEl);
+  storeTable.appendChild(trEl);
 
 }
 function storeRowes(){
@@ -121,14 +121,14 @@ function handleStoreAdd (event){
 
 
   if(!event.target.store.value || !event.target.minC.value || !event.target.maxC.value || !event.target.maxC.value || !event.target.custAvg){
-};
+  };
   var store = event.target.store.value;
   var minC = parseInt(event.target.minC.value);
   var maxC = parseInt(event.target.maxC.value);
   var custAvg = parseInt(event.target.custAvg.value);
 
-  var newCookie = new CookieStand(store,minC,maxC,custAvg);
-console.log(myStore);
+  new CookieStand(store,minC,maxC,custAvg);
+  console.log(myStore);
   // clear text field
   event.target.store.value = null;
   event.target.minC.value = null;
